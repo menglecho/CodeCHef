@@ -1,0 +1,57 @@
+// main.cpp : Defines the entry point for the console application.
+
+//Done by VS, you should comment out if other IDEs
+#include "stdafx.h"
+// These four libraries could use one include <bits\stdc++.h>
+#include <map>
+#include <iostream>
+#include <xfunctional>
+#include <string>
+//Not included in <bits\stdc++.h>
+#include <unordered_set>
+
+
+using namespace std;
+
+int main()
+{
+	int N, M;
+	cin >> N >> M;
+	map<int, string, greater<int>> sp, nsp;
+	unordered_set<int> special;
+
+	for (int i = 0; i < N; i++)
+	{
+		int temp;
+		cin >> temp;
+		special.insert(temp);
+	}
+	
+	for (int i = 0; i < M; i++)
+	{
+		int f, p;
+		string s;
+		cin >> f >> p >> s;
+		if(find(special.begin(),special.end(),f) == special.end())
+		{
+			nsp[p] = s;
+		}
+		else 
+		{
+			sp[p] = s;
+		}
+	}
+
+	for (auto i : sp)
+	{
+		cout << i.second << endl;
+	}
+
+	for (auto i : nsp)
+	{
+		cout << i.second << endl;
+	}
+
+    return 0;
+}
+
